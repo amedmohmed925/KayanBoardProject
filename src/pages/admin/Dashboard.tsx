@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '@/components/Layout';
+import { AdminLayout } from '@/components/AdminLayout';
 import { GlassCard } from '@/components/GlassCard';
 import { ChartWidget } from '@/components/ChartWidget';
 import { ARABIC_CONTENT } from '@/lib/index';
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <Layout title={ARABIC_CONTENT.admin.title}>
+    <AdminLayout title={ARABIC_CONTENT.admin.title}>
       <div className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, index) => (
@@ -46,13 +46,15 @@ const AdminDashboard = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <ChartWidget
-            id="admin-users-chart"
-            type="line"
-            title="نمو المستخدمين واللوحات"
-            data={chartData}
-            config={{
-              dataKeys: ['users', 'boards'],
-              colors: ['#8884d8', '#82ca9d'],
+            widget={{
+              id: "admin-users-chart",
+              type: "line",
+              title: "نمو المستخدمين واللوحات",
+              data: chartData,
+              config: {
+                dataKeys: ['users', 'boards'],
+                colors: ['#8884d8', '#82ca9d'],
+              },
             }}
           />
           <GlassCard className="p-6">
@@ -76,7 +78,7 @@ const AdminDashboard = () => {
           </GlassCard>
         </div>
       </div>
-    </Layout>
+    </AdminLayout>
   );
 };
 

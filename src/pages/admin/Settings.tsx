@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '@/components/Layout';
+import { AdminLayout } from '@/components/AdminLayout';
 import { GlassCard } from '@/components/GlassCard';
 import { ARABIC_CONTENT } from '@/lib/index';
 import { Button } from '@/components/ui/button';
@@ -11,7 +11,7 @@ import { Save, Shield, Globe, Bell } from 'lucide-react';
 
 const AdminSettings = () => {
   return (
-    <Layout title={ARABIC_CONTENT.admin.settings}>
+    <AdminLayout title={ARABIC_CONTENT.admin.settings}>
       <div className="max-w-4xl mx-auto space-y-6">
         <GlassCard className="p-6">
           <div className="flex items-center gap-3 mb-6">
@@ -84,7 +84,7 @@ const AdminSettings = () => {
           </Button>
         </div>
       </div>
-    </Layout>
+    </AdminLayout>
   );
 };
 

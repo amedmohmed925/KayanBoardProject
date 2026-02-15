@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '@/components/Layout';
+import { AdminLayout } from '@/components/AdminLayout';
 import { GlassCard } from '@/components/GlassCard';
 import { ARABIC_CONTENT } from '@/lib/index';
 import { 
@@ -23,7 +23,7 @@ const AdminUsers = () => {
   ];
 
   return (
-    <Layout title={ARABIC_CONTENT.admin.users}>
+    <AdminLayout title={ARABIC_CONTENT.admin.users}>
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">{ARABIC_CONTENT.admin.userList}</h2>
@@ -81,7 +81,7 @@ const AdminUsers = () => {
           </Table>
         </GlassCard>
       </div>
-    </Layout>
+    </AdminLayout>
   );
 };
 

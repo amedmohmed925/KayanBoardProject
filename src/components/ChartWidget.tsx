@@ -58,6 +58,14 @@ const WidgetHeader = ({ title }: { title: string }) => (
 );
 
 export function ChartWidget({ widget }: ChartWidgetProps) {
+  if (!widget) {
+    return (
+      <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm flex items-center justify-center h-[180px]">
+        <p className="text-slate-400 text-sm">خطأ في تحميل الرسم البياني</p>
+      </div>
+    );
+  }
+
   const renderKPI = () => {
     const isUp = widget.trend === 'up';
     const isDown = widget.trend === 'down';

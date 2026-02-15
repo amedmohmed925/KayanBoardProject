@@ -126,51 +126,6 @@ export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps)
             </NavLink>
           ))}
         </nav>
-
-        {user?.role === 'admin' && (
-          <div className="space-y-2">
-            {!collapsed && (
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-              >
-                {ARABIC_CONTENT.admin.title}
-              </motion.p>
-            )}
-            <nav className="space-y-1">
-              {adminItems.map((item) => (
-                <NavLink
-                  key={item.id}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center gap-4 px-3 py-3.5 rounded-2xl transition-all duration-300 group ${
-                      isActive
-                        ? 'bg-gradient-to-r from-indigo-500/10 to-blue-500/10 text-indigo-600 shadow-sm shadow-indigo-500/5'
-                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <item.icon
-                        className={`w-6 h-6 flex-shrink-0 transition-transform group-hover:scale-110 ${
-                          isActive ? 'text-indigo-600' : 'text-slate-400'
-                        }`}
-                      />
-                      <motion.span
-                        variants={labelVariants}
-                        className="font-medium whitespace-nowrap"
-                      >
-                        {item.label}
-                      </motion.span>
-                    </>
-                  )}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        )}
       </div>
 
       {/* Bottom Actions */}
