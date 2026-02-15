@@ -6,8 +6,9 @@ interface AuthState {
   user: {
     email: string;
     name: string;
+    role: 'user' | 'admin';
   } | null;
-  login: (email: string, name: string) => void;
+  login: (email: string, name: string, role?: 'user' | 'admin') => void;
   logout: () => void;
 }
 
@@ -17,9 +18,9 @@ export const useAuth = create<AuthState>()(
       isAuthenticated: false,
       user: null,
 
-      login: (email, name) => set({ 
+      login: (email, name, role = 'user') => set({ 
         isAuthenticated: true, 
-        user: { email, name } 
+        user: { email, name, role } 
       }),
 
       logout: () => set({ 

@@ -26,6 +26,12 @@ import TermsOfService from "@/pages/TermsOfService";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
+// Admin Pages
+import AdminDashboard from "@/pages/admin/Dashboard";
+import AdminUsers from "@/pages/admin/Users";
+import AdminBoards from "@/pages/admin/Boards";
+import AdminSettings from "@/pages/admin/Settings";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -93,6 +99,25 @@ const App = () => {
                   path={ROUTE_PATHS.NOTIFICATIONS} 
                   element={<ProtectedRoute><Notifications /></ProtectedRoute>} 
                 />
+                
+                {/* Admin Routes */}
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_DASHBOARD} 
+                  element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_USERS} 
+                  element={<ProtectedRoute adminOnly><AdminUsers /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_BOARDS} 
+                  element={<ProtectedRoute adminOnly><AdminBoards /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_SETTINGS} 
+                  element={<ProtectedRoute adminOnly><AdminSettings /></ProtectedRoute>} 
+                />
+
                 <Route 
                   path={ROUTE_PATHS.LOGIN} 
                   element={<Login />} 

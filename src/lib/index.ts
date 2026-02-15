@@ -16,6 +16,10 @@ export const ROUTE_PATHS = {
   OTP: '/otp',
   TERMS: '/terms',
   PRIVACY: '/privacy',
+  ADMIN_DASHBOARD: '/admin',
+  ADMIN_USERS: '/admin/users',
+  ADMIN_BOARDS: '/admin/boards',
+  ADMIN_SETTINGS: '/admin/settings',
 } as const;
 
 export type WidgetType = 'kpi' | 'line' | 'bar' | 'pie' | 'activity' | 'table' | 'progress' | 'users';
@@ -52,7 +56,7 @@ export interface UserProfile {
   name: string;
   email: string;
   avatar: string;
-  role: string;
+  role: 'user' | 'admin';
   company: string;
   joinDate: string;
   plan: string;
@@ -187,6 +191,24 @@ export const ARABIC_CONTENT = {
     appearance: 'المظهر',
     notifications: 'الإشعارات',
     integrations: 'التكاملات',
+  },
+  admin: {
+    title: 'لوحة تحكم المسؤول',
+    overview: 'نظرة عامة',
+    users: 'إدارة المستخدمين',
+    boards: 'إدارة اللوحات',
+    settings: 'إعدادات الموقع',
+    totalUsers: 'إجمالي المستخدمين',
+    totalBoards: 'إجمالي اللوحات',
+    activeUsers: 'المستخدمون النشطون',
+    revenue: 'الإيرادات',
+    userList: 'قائمة المستخدمين',
+    boardList: 'قائمة اللوحات',
+    actions: 'الإجراءات',
+    edit: 'تعديل',
+    delete: 'حذف',
+    status: 'الحالة',
+    role: 'الدور',
   },
   auth: {
     loginTitle: 'تسجيل الدخول',

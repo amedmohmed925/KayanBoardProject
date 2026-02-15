@@ -11,7 +11,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Zap,
-  LogOut
+  LogOut,
+  ShieldCheck,
+  UserCog,
+  LayoutGrid,
+  Settings2
 } from 'lucide-react';
 import { ROUTE_PATHS, ARABIC_CONTENT } from '@/lib/index';
 import { useAuth } from '@/hooks/useAuth';
@@ -23,6 +27,7 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps) {
   const { logout, user } = useAuth();
+  
   const menuItems = [
     { id: 'home', label: 'الرئيسية', icon: Home, path: ROUTE_PATHS.HOME },
     { id: 'boards', label: ARABIC_CONTENT.dashboard.myBoards, icon: Layout, path: ROUTE_PATHS.MY_BOARDS },
@@ -30,6 +35,13 @@ export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps)
     { id: 'team', label: ARABIC_CONTENT.dashboard.team, icon: Users, path: ROUTE_PATHS.TEAM },
     { id: 'analytics', label: ARABIC_CONTENT.dashboard.analytics, icon: BarChart3, path: ROUTE_PATHS.ANALYTICS },
     { id: 'settings', label: ARABIC_CONTENT.dashboard.settings, icon: Settings, path: ROUTE_PATHS.SETTINGS },
+  ];
+
+  const adminItems = [
+    { id: 'admin-dash', label: ARABIC_CONTENT.admin.overview, icon: ShieldCheck, path: ROUTE_PATHS.ADMIN_DASHBOARD },
+    { id: 'admin-users', label: ARABIC_CONTENT.admin.users, icon: UserCog, path: ROUTE_PATHS.ADMIN_USERS },
+    { id: 'admin-boards', label: ARABIC_CONTENT.admin.boards, icon: LayoutGrid, path: ROUTE_PATHS.ADMIN_BOARDS },
+    { id: 'admin-settings', label: ARABIC_CONTENT.admin.settings, icon: Settings2, path: ROUTE_PATHS.ADMIN_SETTINGS },
   ];
 
   const sidebarVariants = {
@@ -82,37 +94,84 @@ export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps)
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 px-3 space-y-1">
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.id}
-            to={item.path}
-            className={({ isActive }) =>
-              `flex items-center gap-4 px-3 py-3.5 rounded-2xl transition-all duration-300 group ${
-                isActive
-                  ? 'bg-gradient-to-r from-[#d946ef]/10 to-[#06b6d4]/10 text-[#d946ef] shadow-sm shadow-fuchsia-500/5'
-                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <item.icon
-                  className={`w-6 h-6 flex-shrink-0 transition-transform group-hover:scale-110 ${
-                    isActive ? 'text-[#d946ef]' : 'text-slate-400'
-                  }`}
-                />
-                <motion.span
-                  variants={labelVariants}
-                  className="font-medium whitespace-nowrap"
-                >
-                  {item.label}
-                </motion.span>
-              </>
+      <div className="flex-1 px-3 space-y-6 overflow-y-auto custom-scrollbar">
+        <nav className="space-y-1">
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.id}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-4 px-3 py-3.5 rounded-2xl transition-all duration-300 group ${
+                  isActive
+                    ? 'bg-gradient-to-r from-[#d946ef]/10 to-[#06b6d4]/10 text-[#d946ef] shadow-sm shadow-fuchsia-500/5'
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <item.icon
+                    className={`w-6 h-6 flex-shrink-0 transition-transform group-hover:scale-110 ${
+                      isActive ? 'text-[#d946ef]' : 'text-slate-400'
+                    }`}
+                  />
+                  <motion.span
+                    variants={labelVariants}
+                    className="font-medium whitespace-nowrap"
+                  >
+                    {item.label}
+                  </motion.span>
+                </>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+
+        {user?.role === 'admin' && (
+          <div className="space-y-2">
+            {!collapsed && (
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest"
+              >
+                {ARABIC_CONTENT.admin.title}
+              </motion.p>
             )}
-          </NavLink>
-        ))}
-      </nav>
+            <nav className="space-y-1">
+              {adminItems.map((item) => (
+                <NavLink
+                  key={item.id}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `flex items-center gap-4 px-3 py-3.5 rounded-2xl transition-all duration-300 group ${
+                      isActive
+                        ? 'bg-gradient-to-r from-indigo-500/10 to-blue-500/10 text-indigo-600 shadow-sm shadow-indigo-500/5'
+                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      <item.icon
+                        className={`w-6 h-6 flex-shrink-0 transition-transform group-hover:scale-110 ${
+                          isActive ? 'text-indigo-600' : 'text-slate-400'
+                        }`}
+                      />
+                      <motion.span
+                        variants={labelVariants}
+                        className="font-medium whitespace-nowrap"
+                      >
+                        {item.label}
+                      </motion.span>
+                    </>
+                  )}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+        )}
+      </div>
 
       {/* Bottom Actions */}
       <div className="p-4 border-t border-slate-100 space-y-2">
@@ -152,7 +211,9 @@ export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps)
           {!collapsed && (
             <div className="flex flex-col overflow-hidden">
               <span className="text-sm font-bold text-slate-900 truncate">{user?.name || 'أحمد محمد'}</span>
-              <span className="text-xs text-slate-500 truncate">خطة برو</span>
+              <span className="text-xs text-slate-500 truncate">
+                {user?.role === 'admin' ? 'مسؤول النظام' : 'خطة برو'}
+              </span>
             </div>
           )}
         </div>

@@ -24,7 +24,10 @@ export default function Login() {
 
     // Demo Credentials Check
     if (email === 'admin@kayan.com' && password === 'admin123') {
-      login(email, 'أحمد محمد العلي');
+      login(email, 'أحمد محمد العلي', 'admin');
+      navigate(ROUTE_PATHS.ADMIN_DASHBOARD);
+    } else if (email === 'user@kayan.com' && password === 'user123') {
+      login(email, 'سارة أحمد', 'user');
       navigate(ROUTE_PATHS.DASHBOARD);
     } else {
       setError('البريد الإلكتروني أو كلمة المرور غير صحيحة. استخدم الحساب التجريبي.');
@@ -102,9 +105,19 @@ export default function Login() {
 
           {/* Demo Credentials Info */}
           <div className="mb-8 p-4 bg-primary/5 border border-primary/10 rounded-2xl">
-            <p className="text-sm font-bold text-primary mb-1">الحساب التجريبي المحاكي:</p>
-            <p className="text-xs text-slate-600">البريد: <code className="bg-white px-1 rounded">admin@kayan.com</code></p>
-            <p className="text-xs text-slate-600">كلمة المرور: <code className="bg-white px-1 rounded">admin123</code></p>
+            <p className="text-sm font-bold text-primary mb-1">الحسابات التجريبية:</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">حساب مسؤول</p>
+                <p className="text-xs text-slate-600">البريد: <code className="bg-white px-1 rounded">admin@kayan.com</code></p>
+                <p className="text-xs text-slate-600">كلمة المرور: <code className="bg-white px-1 rounded">admin123</code></p>
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">حساب مستخدم</p>
+                <p className="text-xs text-slate-600">البريد: <code className="bg-white px-1 rounded">user@kayan.com</code></p>
+                <p className="text-xs text-slate-600">كلمة المرور: <code className="bg-white px-1 rounded">user123</code></p>
+              </div>
+            </div>
           </div>
 
           {error && (
