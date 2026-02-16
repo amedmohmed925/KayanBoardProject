@@ -7,12 +7,29 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
-import { Save, Shield, Globe, Bell } from 'lucide-react';
+import { Save, Shield, Globe, Bell, Megaphone } from 'lucide-react';
 
 const AdminSettings = () => {
   return (
     <AdminLayout title={ARABIC_CONTENT.admin.settings}>
       <div className="max-w-4xl mx-auto space-y-6">
+        <GlassCard className="p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <Megaphone className="w-5 h-5 text-rose-500" />
+            <h3 className="text-lg font-semibold text-rose-600">بث رسالة عامة (Broadcast)</h3>
+          </div>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="broadcast-msg">نص الرسالة</Label>
+              <Input id="broadcast-msg" placeholder="اكتب رسالة ستظهر لجميع المستخدمين..." />
+            </div>
+            <div className="flex gap-2">
+              <Button variant="outline" className="flex-1">معاينة</Button>
+              <Button className="flex-1 bg-rose-500 hover:bg-rose-600">إرسال للجميع</Button>
+            </div>
+          </div>
+        </GlassCard>
+
         <GlassCard className="p-6">
           <div className="flex items-center gap-3 mb-6">
             <Globe className="w-5 h-5 text-primary" />

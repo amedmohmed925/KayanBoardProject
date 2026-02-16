@@ -31,6 +31,12 @@ import AdminDashboard from "@/pages/admin/Dashboard";
 import AdminUsers from "@/pages/admin/Users";
 import AdminBoards from "@/pages/admin/Boards";
 import AdminSettings from "@/pages/admin/Settings";
+import AuditLogs from "@/pages/admin/AuditLogs";
+import AdminFinancials from "@/pages/admin/Financials";
+import AIConfig from "@/pages/admin/AIConfig";
+import AdminSupport from "@/pages/admin/Support";
+import ContentManager from "@/pages/admin/ContentManager";
+import SystemHealth from "@/pages/admin/SystemHealth";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -116,6 +122,30 @@ const App = () => {
                 <Route 
                   path={ROUTE_PATHS.ADMIN_SETTINGS} 
                   element={<ProtectedRoute adminOnly><AdminSettings /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_AUDIT} 
+                  element={<ProtectedRoute adminOnly><AuditLogs /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_FINANCIALS} 
+                  element={<ProtectedRoute adminOnly><AdminFinancials /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_AI} 
+                  element={<ProtectedRoute adminOnly><AIConfig /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_SUPPORT} 
+                  element={<ProtectedRoute adminOnly><AdminSupport /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_CONTENT} 
+                  element={<ProtectedRoute adminOnly><ContentManager /></ProtectedRoute>} 
+                />
+                <Route 
+                  path={ROUTE_PATHS.ADMIN_SYSTEM} 
+                  element={<ProtectedRoute adminOnly><SystemHealth /></ProtectedRoute>} 
                 />
 
                 <Route 

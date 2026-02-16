@@ -157,6 +157,9 @@ const AdminUsers = () => {
                           <DropdownMenuLabel>إجراءات إضافية</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem className="gap-2">
+                            <UserCheck className="w-4 h-4" /> انتحال شخصية (Login As)
+                          </DropdownMenuItem>
+                          <DropdownMenuItem className="gap-2">
                             <Shield className="w-4 h-4" /> تغيير الصلاحيات
                           </DropdownMenuItem>
                           <DropdownMenuItem className="gap-2">

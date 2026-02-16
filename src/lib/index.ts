@@ -20,6 +20,12 @@ export const ROUTE_PATHS = {
   ADMIN_USERS: '/admin/users',
   ADMIN_BOARDS: '/admin/boards',
   ADMIN_SETTINGS: '/admin/settings',
+  ADMIN_AUDIT: '/admin/audit',
+  ADMIN_FINANCIALS: '/admin/financials',
+  ADMIN_AI: '/admin/ai',
+  ADMIN_SUPPORT: '/admin/support',
+  ADMIN_CONTENT: '/admin/content',
+  ADMIN_SYSTEM: '/admin/system',
 } as const;
 
 export type WidgetType = 'kpi' | 'line' | 'bar' | 'pie' | 'activity' | 'table' | 'progress' | 'users';
@@ -198,6 +204,12 @@ export const ARABIC_CONTENT = {
     users: 'إدارة المستخدمين',
     boards: 'إدارة اللوحات',
     settings: 'إعدادات الموقع',
+    audit: 'سجل النشاطات',
+    financials: 'المالية والاشتراكات',
+    aiConfig: 'إعدادات الذكاء الاصطناعي',
+    support: 'الدعم الفني',
+    content: 'إدارة المحتوى',
+    system: 'حالة النظام المتقدمة',
     totalUsers: 'إجمالي المستخدمين',
     totalBoards: 'إجمالي اللوحات',
     activeUsers: 'المستخدمون النشطون',

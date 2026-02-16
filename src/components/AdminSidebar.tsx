@@ -9,7 +9,13 @@ import {
   ChevronLeft,
   ChevronRight,
   LogOut,
-  LayoutDashboard
+  LayoutDashboard,
+  History,
+  CreditCard,
+  Cpu,
+  LifeBuoy,
+  FileJson,
+  Activity
 } from 'lucide-react';
 import { ROUTE_PATHS, ARABIC_CONTENT } from '@/lib/index';
 import { useAuth } from '@/hooks/useAuth';
@@ -26,6 +32,12 @@ export function AdminSidebar({ collapsed, onToggle }: AdminSidebarProps) {
     { id: 'admin-dash', label: ARABIC_CONTENT.admin.overview, icon: ShieldCheck, path: ROUTE_PATHS.ADMIN_DASHBOARD },
     { id: 'admin-users', label: ARABIC_CONTENT.admin.users, icon: UserCog, path: ROUTE_PATHS.ADMIN_USERS },
     { id: 'admin-boards', label: ARABIC_CONTENT.admin.boards, icon: LayoutGrid, path: ROUTE_PATHS.ADMIN_BOARDS },
+    { id: 'admin-financials', label: ARABIC_CONTENT.admin.financials, icon: CreditCard, path: ROUTE_PATHS.ADMIN_FINANCIALS },
+    { id: 'admin-content', label: ARABIC_CONTENT.admin.content, icon: FileJson, path: ROUTE_PATHS.ADMIN_CONTENT },
+    { id: 'admin-ai', label: ARABIC_CONTENT.admin.aiConfig, icon: Cpu, path: ROUTE_PATHS.ADMIN_AI },
+    { id: 'admin-support', label: ARABIC_CONTENT.admin.support, icon: LifeBuoy, path: ROUTE_PATHS.ADMIN_SUPPORT },
+    { id: 'admin-audit', label: ARABIC_CONTENT.admin.audit, icon: History, path: ROUTE_PATHS.ADMIN_AUDIT },
+    { id: 'admin-system', label: ARABIC_CONTENT.admin.system, icon: Activity, path: ROUTE_PATHS.ADMIN_SYSTEM },
     { id: 'admin-settings', label: ARABIC_CONTENT.admin.settings, icon: Settings2, path: ROUTE_PATHS.ADMIN_SETTINGS },
   ];
 
